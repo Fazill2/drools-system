@@ -1,20 +1,36 @@
-package com.sample
- 
-import com.sample.DroolsTest.Message;
- 
-rule "Hello World"
-    when
-        m : Message( status == Message.HELLO, myMessage : message )
-    then
-        System.out.println( myMessage );
-        m.setMessage( "Goodbye cruel world" );
-        m.setStatus( Message.GOODBYE );
-        update( m );
+package com.soda.rules
+
+import com.soda.helper.SodaUI
+
+rule "init"
+when
+then
+    insert(new SodaUI("Are you in mexico?"));
 end
 
-rule "GoodBye"
-    when
-        Message( status == Message.GOODBYE, myMessage : message )
-    then
-        System.out.println( myMessage );
+rule "Question 1: Are you mexican?"
+when
+    sodaUI : SodaUI(sodaUI.getQuestionString() == "Are you in mexico?")
+then
+    System.out.println("He is in Mexico."); 
+    sodaUI.setQuestionString("Are you in Poland?");
+    update(sodaUI);
+end
+
+rule "Question 2: Are you polish?"
+when
+    sodaUI : SodaUI(sodaUI.getQuestionString() == "Are you in Poland?")
+then
+    System.out.println("He is in Poland."); 
+    sodaUI.setQuestionString("Are you French?");
+    update(sodaUI);
+end
+
+rule "Question 3: Are you French?"
+when
+    sodaUI : SodaUI(sodaUI.getQuestionString() == "Are you French?")
+then
+    System.out.println("He is french."); 
+    sodaUI.setQuestionString("Are you stupid?");
+    update(sodaUI);
 end

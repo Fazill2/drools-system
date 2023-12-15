@@ -13,13 +13,8 @@ public class SodaHelper {
 	        KieServices ks = KieServices.Factory.get();
     	    KieContainer kContainer = ks.getKieClasspathContainer();
 
-            // go !
-            Message message = new Message();
-            message.setMessage("Hello World");
-            message.setStatus(Message.HELLO);
-            CheckoutCallback cc = new CheckoutCallback(kContainer);
+            CheckoutCallback cc = new CheckoutCallback();
             SodaUI ui = new SodaUI(cc);
-            ui.createAndShowGUI(true);
         } catch (Throwable t) {
             t.printStackTrace();
         }

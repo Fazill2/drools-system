@@ -1,62 +1,70 @@
 package com.soda.helper;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.*;
 
-import java.awt.BorderLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import com.soda.helper.CheckoutCallback;
+public class SodaUI extends JFrame {
 
-public class SodaUI extends JPanel {
-    private JTextArea output;
+	private static final long serialVersionUID = 125549691685141816L;
+	private JLabel question = new JLabel("Are you ready? ");
+	private JComboBox<String> answerComboBox = new JComboBox<>(new String[]{"Yes", "No"});
     private CheckoutCallback callback;
 
     public SodaUI(CheckoutCallback callback) {
-        super(new BorderLayout());
+        super("Soda Expert System");
         this.callback = callback;
-        JPanel checkoutPane = new JPanel();
-        JButton button = new JButton( "Checkout" );
-
-        button.addMouseListener( new CheckoutButtonHandler() );
-        button.setActionCommand( "checkout" );
-        checkoutPane.add( button );
-        output = new JTextArea( 1,
-                                    10 );
-            output.setEditable( false );
-        JScrollPane outputPane = new JScrollPane( output,
-                                                      ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
-                                                      ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED );
-        checkoutPane.add( outputPane );
-        this.add(checkoutPane);
-        this.callback.setOutput( this.output );
-    }
-
-    public void createAndShowGUI(boolean exitOnClose) {
-        //Create and set up the window.
-        JFrame frame = new JFrame( "Soda Helper" );
-        frame.setDefaultCloseOperation(exitOnClose ? JFrame.EXIT_ON_CLOSE : JFrame.DISPOSE_ON_CLOSE);
-
-        setOpaque( true );
-        frame.setContentPane( this );
-
-        //Display the window.
-        frame.pack();
-        frame.setLocationRelativeTo(null); // Center in screen
-        frame.setVisible( true );
+        initComponents();
     }
     
-    private class CheckoutButtonHandler extends MouseAdapter {
-        public void mouseReleased(MouseEvent e) {
-            JButton button = (JButton) e.getComponent();
-            callback.checkout( (JFrame) button.getTopLevelAncestor());
-        }
+    
+
+    public SodaUI(JLabel question, JComboBox<String> answerComboBox) throws HeadlessException {
+		super();
+		this.question = question;
+		this.answerComboBox = answerComboBox;
+	}
+    
+    public SodaUI(String questionString) throws HeadlessException {
+		super();
+		this.question = new JLabel(questionString);
+		this.answerComboBox = new JComboBox<>(new String[]{"Yes", "No"});
+	}
+
+	private void initComponents() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 200);
+        setLocationRelativeTo(null);
+
+        answerComboBox = new JComboBox<>(new String[]{"Yes", "No"});
+        JButton nextButton = new JButton("Next");
+
+        JPanel panel = new JPanel();
+        panel.add(question);
+        panel.add(answerComboBox);
+        panel.add(nextButton);
+
+        nextButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedAnswer = (String) answerComboBox.getSelectedItem();
+                callback.processUserAnswer(selectedAnswer);
+                System.out.println("Question: "+ question.getText() + "| Answer: "+selectedAnswer);
+            }
+        });
+
+        getContentPane().add(panel);
     }
 
+	public String getQuestionString() {
+		return question.getText();
+	}
+	
+	public void setQuestionString(String text) {
+		question.setText(text);
+	}
+    
     
 }

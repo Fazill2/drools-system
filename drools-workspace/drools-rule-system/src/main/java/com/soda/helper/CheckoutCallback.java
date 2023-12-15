@@ -1,39 +1,58 @@
 package com.soda.helper;
 
-import javax.swing.JFrame;
-import javax.swing.JTextArea;
-
-import org.kie.api.runtime.KieContainer;
-import org.kie.api.runtime.KieSession;
+import javax.swing.*;
 
 public class CheckoutCallback {
-    KieContainer kcontainer;
-    JTextArea output;
+    private SodaUI sodaUI;
+    private int questionNumber = 1;
 
-    public CheckoutCallback(KieContainer kcontainer) {
-        this.kcontainer = kcontainer;
+    public CheckoutCallback() {
+        this.sodaUI = new SodaUI(this);
     }
-    
-    public void setOutput(JTextArea output) {
-        this.output = output;
+
+    public void processUserAnswer(String answer) {
+        // Logic to process the user's answer
+        // Depending on the answer, ask the next question or suggest a soda
+        // For example:
+        // if (answer.equals("Yes")) {
+        //     askNextQuestion();
+        // } else {
+        //     suggestSoda();
+        // }
+        setQuestionNumber(getQuestionNumber() + 1);
+        askNextQuestion();
     }
-    
-    public String checkout(JFrame frame) {
 
-        //add the JFrame to the ApplicationData to allow for user interaction
-
-        // From the container, a session is created based on  
-        // its definition and configuration in the META-INF/kmodule.xml file 
-        KieSession ksession = kcontainer.newKieSession("Soda");
-        
-        ksession.setGlobal( "frame",
-                            frame );
-        ksession.setGlobal( "textArea",
-                            this.output );
-
-        ksession.fireAllRules();
-
-        //returns the state of the cart
-        return "Yes";
+    private void askNextQuestion() {
+        // Logic to display the next question based on the questionNumber
+        // Set the content of the question in the Question object
+        // For example:
+        // sodaUI.displayQuestion(new Question("Next question content"));
     }
+
+    private void suggestSoda() {
+        // Logic to suggest a soda based on the user's answers
+        // For example:
+        // sodaUI.displaySuggestedSoda("Suggested Soda: Mountain Dew");
+    }
+
+    public void start() {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                sodaUI.setVisible(true);
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        new CheckoutCallback().start();
+    }
+
+	public int getQuestionNumber() {
+		return questionNumber;
+	}
+
+	public void setQuestionNumber(int questionNumber) {
+		this.questionNumber = questionNumber;
+	}
 }
