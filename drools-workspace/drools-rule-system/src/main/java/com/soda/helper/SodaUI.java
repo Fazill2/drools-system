@@ -17,28 +17,23 @@ public class SodaUI extends JFrame {
         super("Soda Expert System");
         this.callback = callback;
         initComponents();
+        this.setVisible(true);
+        this.callback.checkout();
     }
-    
-    
-
-    public SodaUI(JLabel question, JComboBox<String> answerComboBox) throws HeadlessException {
-		super();
-		this.question = question;
-		this.answerComboBox = answerComboBox;
-	}
+   
     
     public SodaUI(String questionString) throws HeadlessException {
 		super();
 		this.question = new JLabel(questionString);
 		this.answerComboBox = new JComboBox<>(new String[]{"Yes", "No"});
+		initComponents();
+		this.setVisible(true);
 	}
 
 	private void initComponents() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 200);
         setLocationRelativeTo(null);
-
-        answerComboBox = new JComboBox<>(new String[]{"Yes", "No"});
         JButton nextButton = new JButton("Next");
 
         JPanel panel = new JPanel();
@@ -50,8 +45,9 @@ public class SodaUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedAnswer = (String) answerComboBox.getSelectedItem();
-                callback.processUserAnswer(selectedAnswer);
+                // callback.processUserAnswer(selectedAnswer);
                 System.out.println("Question: "+ question.getText() + "| Answer: "+selectedAnswer);
+                callback.checkout();
             }
         });
 
@@ -65,6 +61,11 @@ public class SodaUI extends JFrame {
 	public void setQuestionString(String text) {
 		question.setText(text);
 	}
+	
+	public String getSelectedAnswer() {
+		return (String) this.answerComboBox.getSelectedItem();
+	}
+	
     
     
 }

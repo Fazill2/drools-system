@@ -2,12 +2,25 @@ package com.soda.helper;
 
 import javax.swing.*;
 
-public class CheckoutCallback {
-    private SodaUI sodaUI;
-    private int questionNumber = 1;
+import org.kie.api.runtime.KieContainer;
+import org.kie.api.runtime.KieSession;
 
-    public CheckoutCallback() {
-        this.sodaUI = new SodaUI(this);
+public class CheckoutCallback {
+    private int questionNumber = 1;
+    private KieSession kSession;
+
+    public CheckoutCallback(KieSession kSession) {
+        this.kSession = kSession;
+        // this.kSession.fireAllRules();
+    }
+    
+
+	public void checkout() {
+		if (this.kSession == null)
+			System.out.println("AAAAAAAAA");
+		System.out.println(kSession.toString());
+    	this.kSession.fireAllRules();
+
     }
 
     public void processUserAnswer(String answer) {
@@ -36,17 +49,6 @@ public class CheckoutCallback {
         // sodaUI.displaySuggestedSoda("Suggested Soda: Mountain Dew");
     }
 
-    public void start() {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                sodaUI.setVisible(true);
-            }
-        });
-    }
-
-    public static void main(String[] args) {
-        new CheckoutCallback().start();
-    }
 
 	public int getQuestionNumber() {
 		return questionNumber;

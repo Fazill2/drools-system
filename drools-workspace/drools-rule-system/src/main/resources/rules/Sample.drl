@@ -4,8 +4,17 @@ import com.soda.helper.SodaUI
 
 rule "init"
 when
+	sodaUI: SodaUI()
 then
-    insert(new SodaUI("Are you in mexico?"));
+    sodaUI.setQuestionString("Are you in mexico?");
+    // update(sodaUI);
+    System.out.println("SGAGYUSGA");
+end
+
+rule "nas"
+when
+then
+	System.out.println("asihaio");
 end
 
 rule "Question 1: Are you mexican?"
@@ -14,14 +23,18 @@ when
 then
     System.out.println("He is in Mexico."); 
     sodaUI.setQuestionString("Are you in Poland?");
+    System.out.println(sodaUI.getSelectedAnswer());
+    System.out.println(sodaUI.getQuestionString());
     update(sodaUI);
 end
 
 rule "Question 2: Are you polish?"
 when
-    sodaUI : SodaUI(sodaUI.getQuestionString() == "Are you in Poland?")
+    sodaUI : SodaUI(sodaUI.getQuestionString() == "Are you in Poland?",
+    sodaUI.getSelectedAnswer() == "Yes")
 then
     System.out.println("He is in Poland."); 
+    
     sodaUI.setQuestionString("Are you French?");
     update(sodaUI);
 end
