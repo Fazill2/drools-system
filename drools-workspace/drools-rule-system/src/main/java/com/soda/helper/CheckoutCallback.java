@@ -1,8 +1,5 @@
 package com.soda.helper;
 
-import javax.swing.*;
-
-import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
 public class CheckoutCallback {
@@ -15,7 +12,6 @@ public class CheckoutCallback {
 
 	public void checkout() {
 		kSession.fireAllRules();
-		System.out.println("Rules fired");
     }
 	
 }

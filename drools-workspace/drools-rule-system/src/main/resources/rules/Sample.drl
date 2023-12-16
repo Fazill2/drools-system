@@ -22,74 +22,6 @@ then
 	System.out.println("init");
 end
 
-
-
-rule "Are you in mexico?"
-when
-    q : Question(questionText == "Are you in mexico?", answer == null)
-    sodaUI: SodaUI();
-then
-    showQuestion(q, sodaUI);
-    System.out.println("Are you in mexico?");
-    update(q);
-end
-
-rule "Are you in mexico? No"
-when
-    q : Question(questionText == "Are you in mexico?", answer == "No")
-    sodaUI: SodaUI()
-then
-	Question noobQuestion = new Question();
-	noobQuestion.setQuestionText("Do you PwN nOoBs?");
-	String[] answers = {"Yes", "No"};
-	noobQuestion.setPossibleAnswers(answers);
-	insert(noobQuestion);
-end
-
-rule "Are you in mexico? Yes"
-when
-    q : Question(questionText == "Are you in mexico?", answer == "Yes")
-    sodaUI: SodaUI()
-then
-	// TODO: implement suggestions
-	System.out.println("Show Suggestion");
-end
-
-
-
-rule "Do you PwN nOoBs?"
-when
-    q : Question(questionText == "Do you PwN nOoBs?", answer == null)
-    mexicoQuestion : Question(questionText == "Are you in mexico?", answer == "No")
-    sodaUI: SodaUI();
-then
-    showQuestion(q, sodaUI);
-    System.out.println("Do you PwN nOoBs?");
-    update(q);
-end
-
-rule "Do you PwN nOoBs? Yes"
-when
-    q : Question(questionText == "Do you PwN nOoBs?", answer == "Yes")
-    sodaUi: SodaUI();
-then
-	// TODO: implement suggestions
-	System.out.println("Show Suggestion");
-end
-
-rule "Do you PwN nOoBs? No"
-when
-    q : Question(questionText == "Do you PwN nOoBs?", answer == "No")
-    sodaUI: SodaUI();
-then
-    Question dietQuestion = new Question();
-	dietQuestion.setQuestionText("Are you on a diet?");
-	String[] answers = {"Yes", "No"};
-	dietQuestion.setPossibleAnswers(answers);
-	insert(dietQuestion);
-end
-
-
 function void showQuestion(Question question, JFrame frame){
 	int n = JOptionPane.showOptionDialog(frame,
                                              question.getQuestionText(),
@@ -102,3 +34,863 @@ function void showQuestion(Question question, JFrame frame){
    question.setAnswer(question.getPossibleAnswers()[n]);
 }
 
+rule "1. Are you in mexico?"
+when
+    q : Question(questionText == "Are you in mexico?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "1. Are you in mexico? No"
+when
+    q : Question(questionText == "Are you in mexico?", answer == "No")
+    sodaUI: SodaUI()
+then
+	Question noobQuestion = new Question();
+	noobQuestion.setQuestionText("Do you PwN nOoBs?");
+	String[] answers = {"Yes", "No"};
+	noobQuestion.setPossibleAnswers(answers);
+	insert(noobQuestion);
+end
+
+rule "1. Are you in mexico? Yes"
+when
+    q : Question(questionText == "Are you in mexico?", answer == "Yes")
+    sodaUI: SodaUI()
+then
+	sodaUI.showRecomendations("Mexico drinks: ...");
+end
+
+// 2. 
+
+rule "2. Do you PwN nOoBs?"
+when
+    q : Question(questionText == "Do you PwN nOoBs?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "2. Do you PwN nOoBs? Yes"
+when
+    q : Question(questionText == "Do you PwN nOoBs?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Moundain Dew, Jolt Cola, Mello Yello, Bols");
+end
+
+rule "2. Do you PwN nOoBs? No"
+when
+    q : Question(questionText == "Do you PwN nOoBs?", answer == "No")
+    sodaUI: SodaUI();
+then
+    Question dietQuestion = new Question();
+	dietQuestion.setQuestionText("Are you on a diet?");
+	String[] answers = {"Yes", "No"};
+	dietQuestion.setPossibleAnswers(answers);
+	insert(dietQuestion);
+end
+
+// 3.
+
+rule "3. Are you on a diet?"
+when
+    q : Question(questionText == "Are you on a diet?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "3. Are you on a diet? Yes"
+when
+    q : Question(questionText == "Are you on a diet?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+    Question q2 = new Question();
+	q2.setQuestionText("Are you ostentatious?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+rule "3. Are you on a diet? No"
+when
+    q : Question(questionText == "Are you on a diet?", answer == "No")
+    sodaUI: SodaUI();
+then
+    Question q2 = new Question();
+	q2.setQuestionText("Are you animated?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 4. Are you animated
+
+rule "4. Are you animated?"
+when
+    q : Question(questionText == "Are you animated?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "4. Are you animated? Yes"
+when
+    q : Question(questionText == "Are you animated?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Cactus, Buzz, Sturm");
+end
+
+rule "4. Are you animated? No"
+when
+    q : Question(questionText == "Are you animated?", answer == "No")
+    sodaUI: SodaUI();
+then
+    Question q2 = new Question();
+	q2.setQuestionText("Are you a juggalo?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 5. Are you a juggalo?
+
+rule "5. Are you a juggalo?"
+when
+    q : Question(questionText == "Are you a juggalo?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "5. Are you a juggalo? Yes"
+when
+    q : Question(questionText == "Are you a juggalo?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Faygo");
+end
+
+rule "5. Are you a juggalo? No"
+when
+    q : Question(questionText == "Are you a juggalo?", answer == "No")
+    sodaUI: SodaUI();
+then
+    Question q2 = new Question();
+	q2.setQuestionText("Do you like the aftertaste of dirt?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 6. Are you ostentatious?
+
+rule "6. Are you ostentatious?"
+when
+    q : Question(questionText == "Are you ostentatious?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "6. Are you ostentatious? Yes"
+when
+    q : Question(questionText == "Are you ostentatious?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Diet Rite, Zevia, Diet Hansens, Blue Sky");
+end
+
+rule "6. Are you ostentatious? No"
+when
+    q : Question(questionText == "Are you ostentatious?", answer == "No")
+    sodaUI: SodaUI();
+then
+    Question q2 = new Question();
+	q2.setQuestionText("Do you need a boost?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 7. Do you need a boost?
+
+rule "7. Do you need a boost?"
+when
+    q : Question(questionText == "Do you need a boost?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "7. Do you need a boost? Yes"
+when
+    q : Question(questionText == "Do you need a boost?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Diet Coke Lime, Diet Coke Cherry, Diet Pepsi, Coca-Cola Zero, Dr Pepper Diet");
+end
+
+rule "7. Do you need a boost? No"
+when
+    q : Question(questionText == "Do you need a boost?", answer == "No")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Diet Sprite, 7up Cherry, Diet Bargs, Fresca, Diet A&W");
+end
+
+// 8. Do you like the aftertaste of dirt?
+
+rule "8. Do you like the aftertaste of dirt?"
+when
+    q : Question(questionText == "Do you like the aftertaste of dirt?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "8. Do you like the aftertaste of dirt? Yes"
+when
+    q : Question(questionText == "Do you like the aftertaste of dirt?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Pepsi Jazz");
+end
+
+rule "8. Do you like the aftertaste of dirt? No"
+when
+    q : Question(questionText == "Do you like the aftertaste of dirt?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Are you on Tay Zonday?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 9. Are you on Tay Zonday?
+
+rule "9. Are you on Tay Zonday?"
+when
+    q : Question(questionText == "Are you on Tay Zonday?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "9. Are you on Tay Zonday? Yes"
+when
+    q : Question(questionText == "Are you on Tay Zonday?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Dr Pepper Cherry");
+end
+
+rule "9. Are you on Tay Zonday? No"
+when
+    q : Question(questionText == "Are you on Tay Zonday?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Are you in Brazil?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 10. Are you in Brazil?
+
+rule "10. Are you in Brazil?"
+when
+    q : Question(questionText == "Are you in Brazil?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "10. Are you in Brazil? Yes"
+when
+    q : Question(questionText == "Are you in Brazil?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Guarand Antarctica");
+end
+
+rule "10. Are you in Brazil? No"
+when
+    q : Question(questionText == "Are you in Brazil?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Are you on the dole?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 11. Are you on the dole?
+
+rule "11. Are you on the dole?"
+when
+    q : Question(questionText == "Are you on the dole?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "11. Are you on the dole? Yes"
+when
+    q : Question(questionText == "Are you on the dole?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Lemonade drink");
+end
+
+rule "11. Are you on the dole? No"
+when
+    q : Question(questionText == "Are you on the dole?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Have you the flux capacitor?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 12. Have you the flux capacitor?
+
+rule "12. Have you the flux capacitor?"
+when
+    q : Question(questionText == "Have you the flux capacitor?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "12. Have you the flux capacitor Yes"
+when
+    q : Question(questionText == "Have you the flux capacitor?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Tab, Hubba Bubba, Pepsi Crystal, Coca-Cola Blak");
+end
+
+rule "12. Have you the flux capacitor No"
+when
+    q : Question(questionText == "Have you the flux capacitor?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Do you like drinking bubble gum?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 13. Do you like drinking bubble gum?
+
+rule "13. Do you like drinking bubble gum?"
+when
+    q : Question(questionText == "Do you like drinking bubble gum?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "13. Do you like drinking bubble gum? Yes"
+when
+    q : Question(questionText == "Do you like drinking bubble gum?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Inca Kola");
+end
+
+rule "13. Do you like drinking bubble gum? No"
+when
+    q : Question(questionText == "Do you like drinking bubble gum?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Are you pulling an all-nighter?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 14. Are you pulling an all-nighter?
+
+rule "14. Are you pulling an all-nighter?"
+when
+    q : Question(questionText == "Are you pulling an all-nighter?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "14. Are you pulling an all-nighter? Yes"
+when
+    q : Question(questionText == "Are you pulling an all-nighter?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Vault, Pepsi Max, RedBull Cola, Josta");
+end
+
+rule "14. Are you pulling an all-nighter? No"
+when
+    q : Question(questionText == "Are you pulling an all-nighter?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Are you shopping at Tesco?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 15. Are you shopping at Tesco?
+
+rule "15. Are you shopping at Tesco?"
+when
+    q : Question(questionText == "Are you shopping at Tesco?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "15. Are you shopping at Tesco? Yes"
+when
+    q : Question(questionText == "Are you shopping at Tesco?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Tesco Cola");
+end
+
+rule "15. Are you shopping at Tesco? No"
+when
+    q : Question(questionText == "Are you shopping at Tesco?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Are you at picnic?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 16. Are you at picnic?
+
+rule "16. Are you at picnic?"
+when
+    q : Question(questionText == "Are you at picnic?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "16. Are you at picnic? Yes"
+when
+    q : Question(questionText == "Are you at picnic?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Country Time Lemonade, Squirt, Dad's Boot Beer, Sunkist");
+end
+
+rule "16. Are you at picnic? No"
+when
+    q : Question(questionText == "Are you at picnic?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Can you buy any of these?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 17. Can you buy any of these?
+
+rule "17. Can you buy any of these?"
+when
+    q : Question(questionText == "Can you buy any of these?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "17. Can you buy any of these? Yes"
+when
+    q : Question(questionText == "Can you buy any of these?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Birch Beer, Moxie, Ale, DrPepper glass, CheerWine");
+end
+
+rule "17. Can you buy any of these? No"
+when
+    q : Question(questionText == "Can you buy any of these?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Do you enjoy Tyler Perry movies?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 18. Do you enjoy Tyler Perry movies?
+
+rule "18. Do you enjoy Tyler Perry movies?"
+when
+    q : Question(questionText == "Do you enjoy Tyler Perry movies?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "18. Do you enjoy Tyler Perry movies? Yes"
+when
+    q : Question(questionText == "Do you enjoy Tyler Perry movies?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Welchs, Fanta Grape, Big Red, Crush, Fanta, Hawaiian Punch");
+end
+
+rule "18. Do you enjoy Tyler Perry movies? No"
+when
+    q : Question(questionText == "Do you enjoy Tyler Perry movies?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Do you want root beer?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 19. Do you want root beer?
+
+rule "19. Do you want root beer?"
+when
+    q : Question(questionText == "Do you want root beer?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "19. Do you want root beer? Yes"
+when
+    q : Question(questionText == "Do you want root beer?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+		Question q2 = new Question();
+	q2.setQuestionText("Do you care about quality?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+rule "19. Do you want root beer? No"
+when
+    q : Question(questionText == "Do you want root beer?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Do you have a tummy ache?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 20. Do you have a tummy ache?
+
+rule "20. Do you have a tummy ache?"
+when
+    q : Question(questionText == "Do you have a tummy ache?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "20. Do you have a tummy ache? Yes"
+when
+    q : Question(questionText == "Do you have a tummy ache?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Canada dry, Schweppes Ginger Ale, Seagram's Ginger Ale, Vernors");
+end
+
+rule "20. Do you have a tummy ache? No"
+when
+    q : Question(questionText == "Do you have a tummy ache?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Do you care about HFCS?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 21. Do you care about HFCS?
+
+rule "21. Do you care about HFCS?"
+when
+    q : Question(questionText == "Do you care about HFCS?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "21. Do you care about HFCS? Yes"
+when
+    q : Question(questionText == "Do you care about HFCS?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("...and taste?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+end
+
+rule "21. Do you care about HFCS? No"
+when
+    q : Question(questionText == "Do you care about HFCS?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Do you enjoy 'cherry' with your beverage?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 22. Do you care about quality?
+
+rule "22. Do you care about quality?"
+when
+    q : Question(questionText == "Do you care about quality?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "22. Do you care about quality? Yes"
+when
+    q : Question(questionText == "Do you care about quality?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Virgo, IBC, Thomas Kempler, Dr. Browns,...");
+end
+
+rule "22. Do you care about quality? No"
+when
+    q : Question(questionText == "Do you care about quality?", answer == "No")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("A&W, MUG Root Beer, Bargs Root Beer");
+end
+
+// 23. ...and taste?
+
+rule "23. ...and taste?"
+when
+    q : Question(questionText == "...and taste?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "23. ...and taste? Yes"
+when
+    q : Question(questionText == "...and taste?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Coca-Cola,...");
+end
+
+rule "23. ...and taste? No"
+when
+    q : Question(questionText == "...and taste?", answer == "No")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Hansen's Soda, Mountain Dew, Pepsi-Cola throwback");
+end
+
+// 24. Do you enjoy 'cherry' with your beverage?
+
+rule "24. Do you enjoy 'cherry' with your beverage?"
+when
+    q : Question(questionText == "Do you enjoy 'cherry' with your beverage?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "24. Do you enjoy 'cherry' with your beverage? Yes"
+when
+    q : Question(questionText == "Do you enjoy 'cherry' with your beverage?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Coca-Cola Cherry, 7-up Cherry, Coca-Cola Cherry-Vanilla, DrPepper Vanilla");
+end
+
+rule "24. Do you enjoy 'cherry' with your beverage? No"
+when
+    q : Question(questionText == "Do you enjoy 'cherry' with your beverage?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Can you tolerate caffeine?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 25. Can you tolerate caffeine?
+
+rule "25. Can you tolerate caffeine?"
+when
+    q : Question(questionText == "Can you tolerate caffeine?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "25. Can you tolerate caffeine? Yes"
+when
+    q : Question(questionText == "Can you tolerate caffeine?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Do you carry a backpack?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+rule "25. Can you tolerate caffeine? No"
+when
+    q : Question(questionText == "Can you tolerate caffeine?", answer == "No")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Sprite, DrBrowns, 7up, sierra mist, BubbleUp");
+end
+
+// 26. Do you carry a backpack?
+
+rule "26. Do you carry a backpack?"
+when
+    q : Question(questionText == "Do you carry a backpack?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "26. Do you carry a backpack? Yes"
+when
+    q : Question(questionText == "Do you carry a backpack?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Pepsi Blue, Pibb Xtra, Mountain Dew, A&W");
+end
+
+rule "26. Do you carry a backpack? No"
+when
+    q : Question(questionText == "Do you carry a backpack?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Do you want your tastebuds to sing?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 27. Do you want your tastebuds to sing?
+
+rule "27. Do you want your tastebuds to sing?"
+when
+    q : Question(questionText == "Do you want your tastebuds to sing?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "27. Do you want your tastebuds to sing? Yes"
+when
+    q : Question(questionText == "Do you want your tastebuds to sing?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Shoots");
+end
+
+rule "27. Do you want your tastebuds to sing? No"
+when
+    q : Question(questionText == "Do you want your tastebuds to sing?", answer == "No")
+    sodaUI: SodaUI();
+then
+	Question q2 = new Question();
+	q2.setQuestionText("Do you long for 'the simpler' days?");
+	String[] answers = {"Yes", "No"};
+	q2.setPossibleAnswers(answers);
+	insert(q2);
+end
+
+// 28. Do you long for 'the simpler' days?
+
+rule "28. Do you long for 'the simpler' days?"
+when
+    q : Question(questionText == "Do you long for 'the simpler' days?", answer == null)
+    sodaUI: SodaUI();
+then
+    showQuestion(q, sodaUI);
+    update(q);
+end
+
+rule "28. Do you long for 'the simpler' days? Yes"
+when
+    q : Question(questionText == "Do you long for 'the simpler' days?", answer == "Yes")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Pepsi, RC Cola, Coca-Cola classic, NEK");
+end
+
+rule "28. Do you long for 'the simpler' days? No"
+when
+    q : Question(questionText == "Do you long for 'the simpler' days?", answer == "No")
+    sodaUI: SodaUI();
+then
+	sodaUI.showRecomendations("Vanilla Coke, A&W, DrPepper");
+end

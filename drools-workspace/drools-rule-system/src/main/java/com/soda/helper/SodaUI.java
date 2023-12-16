@@ -46,17 +46,17 @@ public class SodaUI extends JFrame {
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String selectedAnswer = (String) answerComboBox.getSelectedItem();
-                // callback.processUserAnswer(selectedAnswer);
-                System.out.println("Question: "+ question.getText() + "| Answer: "+selectedAnswer);
-                answerSubmitted = true;
                 callback.checkout();
-                System.out.println(answerSubmitted);
             }
         });
 
         getContentPane().add(panel);
     }
+	
+	public void showRecomendations(String recommendationText) {
+        JOptionPane.showMessageDialog(this, recommendationText, "Recommendation", JOptionPane.INFORMATION_MESSAGE);
+        dispose();
+	}
 
 	public String getQuestionString() {
 		return question.getText();
