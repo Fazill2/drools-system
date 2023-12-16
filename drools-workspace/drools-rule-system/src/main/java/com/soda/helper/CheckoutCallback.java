@@ -7,7 +7,6 @@ public class CheckoutCallback {
 
     public CheckoutCallback(KieSession kSession) {
         this.kSession = kSession;
-        // this.kSession.fireAllRules();
     }
 
 	public void checkout() {

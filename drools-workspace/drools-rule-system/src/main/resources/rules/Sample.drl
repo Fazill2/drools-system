@@ -34,7 +34,9 @@ function void showQuestion(Question question, JFrame frame){
    question.setAnswer(question.getPossibleAnswers()[n]);
 }
 
-rule "1. Are you in mexico?"
+// Are you in mexico?
+
+rule "Are you in mexico?"
 when
     q : Question(questionText == "Are you in mexico?", answer == null)
     sodaUI: SodaUI();
@@ -43,7 +45,7 @@ then
     update(q);
 end
 
-rule "1. Are you in mexico? No"
+rule "Are you in mexico? No"
 when
     q : Question(questionText == "Are you in mexico?", answer == "No")
     sodaUI: SodaUI()
@@ -55,7 +57,7 @@ then
 	insert(noobQuestion);
 end
 
-rule "1. Are you in mexico? Yes"
+rule "Are you in mexico? Yes"
 when
     q : Question(questionText == "Are you in mexico?", answer == "Yes")
     sodaUI: SodaUI()
@@ -63,9 +65,9 @@ then
 	sodaUI.showRecomendations("Mexico drinks: ...");
 end
 
-// 2. 
+// Do you PwN nOoBs?
 
-rule "2. Do you PwN nOoBs?"
+rule "Do you PwN nOoBs?"
 when
     q : Question(questionText == "Do you PwN nOoBs?", answer == null)
     sodaUI: SodaUI();
@@ -74,7 +76,7 @@ then
     update(q);
 end
 
-rule "2. Do you PwN nOoBs? Yes"
+rule "Do you PwN nOoBs? Yes"
 when
     q : Question(questionText == "Do you PwN nOoBs?", answer == "Yes")
     sodaUI: SodaUI();
@@ -82,7 +84,7 @@ then
 	sodaUI.showRecomendations("Moundain Dew, Jolt Cola, Mello Yello, Bols");
 end
 
-rule "2. Do you PwN nOoBs? No"
+rule "Do you PwN nOoBs? No"
 when
     q : Question(questionText == "Do you PwN nOoBs?", answer == "No")
     sodaUI: SodaUI();
@@ -94,9 +96,9 @@ then
 	insert(dietQuestion);
 end
 
-// 3.
+// Are you on a diet?
 
-rule "3. Are you on a diet?"
+rule "Are you on a diet?"
 when
     q : Question(questionText == "Are you on a diet?", answer == null)
     sodaUI: SodaUI();
@@ -105,7 +107,7 @@ then
     update(q);
 end
 
-rule "3. Are you on a diet? Yes"
+rule "Are you on a diet? Yes"
 when
     q : Question(questionText == "Are you on a diet?", answer == "Yes")
     sodaUI: SodaUI();
@@ -117,7 +119,7 @@ then
 	insert(q2);
 end
 
-rule "3. Are you on a diet? No"
+rule "Are you on a diet? No"
 when
     q : Question(questionText == "Are you on a diet?", answer == "No")
     sodaUI: SodaUI();
@@ -129,9 +131,9 @@ then
 	insert(q2);
 end
 
-// 4. Are you animated
+// Are you animated?
 
-rule "4. Are you animated?"
+rule "Are you animated?"
 when
     q : Question(questionText == "Are you animated?", answer == null)
     sodaUI: SodaUI();
@@ -140,7 +142,7 @@ then
     update(q);
 end
 
-rule "4. Are you animated? Yes"
+rule "Are you animated? Yes"
 when
     q : Question(questionText == "Are you animated?", answer == "Yes")
     sodaUI: SodaUI();
@@ -148,7 +150,7 @@ then
 	sodaUI.showRecomendations("Cactus, Buzz, Sturm");
 end
 
-rule "4. Are you animated? No"
+rule "Are you animated? No"
 when
     q : Question(questionText == "Are you animated?", answer == "No")
     sodaUI: SodaUI();
@@ -160,9 +162,9 @@ then
 	insert(q2);
 end
 
-// 5. Are you a juggalo?
+// Are you a juggalo?
 
-rule "5. Are you a juggalo?"
+rule "Are you a juggalo?"
 when
     q : Question(questionText == "Are you a juggalo?", answer == null)
     sodaUI: SodaUI();
@@ -171,7 +173,7 @@ then
     update(q);
 end
 
-rule "5. Are you a juggalo? Yes"
+rule "Are you a juggalo? Yes"
 when
     q : Question(questionText == "Are you a juggalo?", answer == "Yes")
     sodaUI: SodaUI();
@@ -179,7 +181,7 @@ then
 	sodaUI.showRecomendations("Faygo");
 end
 
-rule "5. Are you a juggalo? No"
+rule "Are you a juggalo? No"
 when
     q : Question(questionText == "Are you a juggalo?", answer == "No")
     sodaUI: SodaUI();
@@ -191,9 +193,9 @@ then
 	insert(q2);
 end
 
-// 6. Are you ostentatious?
+// Are you ostentatious?
 
-rule "6. Are you ostentatious?"
+rule "Are you ostentatious?"
 when
     q : Question(questionText == "Are you ostentatious?", answer == null)
     sodaUI: SodaUI();
@@ -202,7 +204,7 @@ then
     update(q);
 end
 
-rule "6. Are you ostentatious? Yes"
+rule "Are you ostentatious? Yes"
 when
     q : Question(questionText == "Are you ostentatious?", answer == "Yes")
     sodaUI: SodaUI();
@@ -210,7 +212,7 @@ then
 	sodaUI.showRecomendations("Diet Rite, Zevia, Diet Hansens, Blue Sky");
 end
 
-rule "6. Are you ostentatious? No"
+rule "Are you ostentatious? No"
 when
     q : Question(questionText == "Are you ostentatious?", answer == "No")
     sodaUI: SodaUI();
@@ -222,9 +224,9 @@ then
 	insert(q2);
 end
 
-// 7. Do you need a boost?
+// Do you need a boost?
 
-rule "7. Do you need a boost?"
+rule "Do you need a boost?"
 when
     q : Question(questionText == "Do you need a boost?", answer == null)
     sodaUI: SodaUI();
@@ -233,7 +235,7 @@ then
     update(q);
 end
 
-rule "7. Do you need a boost? Yes"
+rule "Do you need a boost? Yes"
 when
     q : Question(questionText == "Do you need a boost?", answer == "Yes")
     sodaUI: SodaUI();
@@ -241,7 +243,7 @@ then
 	sodaUI.showRecomendations("Diet Coke Lime, Diet Coke Cherry, Diet Pepsi, Coca-Cola Zero, Dr Pepper Diet");
 end
 
-rule "7. Do you need a boost? No"
+rule "Do you need a boost? No"
 when
     q : Question(questionText == "Do you need a boost?", answer == "No")
     sodaUI: SodaUI();
@@ -249,9 +251,9 @@ then
 	sodaUI.showRecomendations("Diet Sprite, 7up Cherry, Diet Bargs, Fresca, Diet A&W");
 end
 
-// 8. Do you like the aftertaste of dirt?
+// Do you like the aftertaste of dirt?
 
-rule "8. Do you like the aftertaste of dirt?"
+rule "Do you like the aftertaste of dirt?"
 when
     q : Question(questionText == "Do you like the aftertaste of dirt?", answer == null)
     sodaUI: SodaUI();
@@ -260,7 +262,7 @@ then
     update(q);
 end
 
-rule "8. Do you like the aftertaste of dirt? Yes"
+rule "Do you like the aftertaste of dirt? Yes"
 when
     q : Question(questionText == "Do you like the aftertaste of dirt?", answer == "Yes")
     sodaUI: SodaUI();
@@ -268,7 +270,7 @@ then
 	sodaUI.showRecomendations("Pepsi Jazz");
 end
 
-rule "8. Do you like the aftertaste of dirt? No"
+rule "Do you like the aftertaste of dirt? No"
 when
     q : Question(questionText == "Do you like the aftertaste of dirt?", answer == "No")
     sodaUI: SodaUI();
@@ -280,9 +282,9 @@ then
 	insert(q2);
 end
 
-// 9. Are you on Tay Zonday?
+// Are you on Tay Zonday?
 
-rule "9. Are you on Tay Zonday?"
+rule "Are you on Tay Zonday?"
 when
     q : Question(questionText == "Are you on Tay Zonday?", answer == null)
     sodaUI: SodaUI();
@@ -291,7 +293,7 @@ then
     update(q);
 end
 
-rule "9. Are you on Tay Zonday? Yes"
+rule "Are you on Tay Zonday? Yes"
 when
     q : Question(questionText == "Are you on Tay Zonday?", answer == "Yes")
     sodaUI: SodaUI();
@@ -299,7 +301,7 @@ then
 	sodaUI.showRecomendations("Dr Pepper Cherry");
 end
 
-rule "9. Are you on Tay Zonday? No"
+rule "Are you on Tay Zonday? No"
 when
     q : Question(questionText == "Are you on Tay Zonday?", answer == "No")
     sodaUI: SodaUI();
@@ -311,9 +313,9 @@ then
 	insert(q2);
 end
 
-// 10. Are you in Brazil?
+// Are you in Brazil?
 
-rule "10. Are you in Brazil?"
+rule "Are you in Brazil?"
 when
     q : Question(questionText == "Are you in Brazil?", answer == null)
     sodaUI: SodaUI();
@@ -322,7 +324,7 @@ then
     update(q);
 end
 
-rule "10. Are you in Brazil? Yes"
+rule "Are you in Brazil? Yes"
 when
     q : Question(questionText == "Are you in Brazil?", answer == "Yes")
     sodaUI: SodaUI();
@@ -330,7 +332,7 @@ then
 	sodaUI.showRecomendations("Guarand Antarctica");
 end
 
-rule "10. Are you in Brazil? No"
+rule "Are you in Brazil? No"
 when
     q : Question(questionText == "Are you in Brazil?", answer == "No")
     sodaUI: SodaUI();
@@ -342,9 +344,9 @@ then
 	insert(q2);
 end
 
-// 11. Are you on the dole?
+// Are you on the dole?
 
-rule "11. Are you on the dole?"
+rule "Are you on the dole?"
 when
     q : Question(questionText == "Are you on the dole?", answer == null)
     sodaUI: SodaUI();
@@ -353,7 +355,7 @@ then
     update(q);
 end
 
-rule "11. Are you on the dole? Yes"
+rule "Are you on the dole? Yes"
 when
     q : Question(questionText == "Are you on the dole?", answer == "Yes")
     sodaUI: SodaUI();
@@ -361,7 +363,7 @@ then
 	sodaUI.showRecomendations("Lemonade drink");
 end
 
-rule "11. Are you on the dole? No"
+rule "Are you on the dole? No"
 when
     q : Question(questionText == "Are you on the dole?", answer == "No")
     sodaUI: SodaUI();
@@ -373,9 +375,9 @@ then
 	insert(q2);
 end
 
-// 12. Have you the flux capacitor?
+// Have you the flux capacitor?
 
-rule "12. Have you the flux capacitor?"
+rule "Have you the flux capacitor?"
 when
     q : Question(questionText == "Have you the flux capacitor?", answer == null)
     sodaUI: SodaUI();
@@ -384,7 +386,7 @@ then
     update(q);
 end
 
-rule "12. Have you the flux capacitor Yes"
+rule "Have you the flux capacitor Yes"
 when
     q : Question(questionText == "Have you the flux capacitor?", answer == "Yes")
     sodaUI: SodaUI();
@@ -392,7 +394,7 @@ then
 	sodaUI.showRecomendations("Tab, Hubba Bubba, Pepsi Crystal, Coca-Cola Blak");
 end
 
-rule "12. Have you the flux capacitor No"
+rule "Have you the flux capacitor No"
 when
     q : Question(questionText == "Have you the flux capacitor?", answer == "No")
     sodaUI: SodaUI();
@@ -404,9 +406,9 @@ then
 	insert(q2);
 end
 
-// 13. Do you like drinking bubble gum?
+// Do you like drinking bubble gum?
 
-rule "13. Do you like drinking bubble gum?"
+rule "Do you like drinking bubble gum?"
 when
     q : Question(questionText == "Do you like drinking bubble gum?", answer == null)
     sodaUI: SodaUI();
@@ -415,7 +417,7 @@ then
     update(q);
 end
 
-rule "13. Do you like drinking bubble gum? Yes"
+rule "Do you like drinking bubble gum? Yes"
 when
     q : Question(questionText == "Do you like drinking bubble gum?", answer == "Yes")
     sodaUI: SodaUI();
@@ -423,7 +425,7 @@ then
 	sodaUI.showRecomendations("Inca Kola");
 end
 
-rule "13. Do you like drinking bubble gum? No"
+rule "Do you like drinking bubble gum? No"
 when
     q : Question(questionText == "Do you like drinking bubble gum?", answer == "No")
     sodaUI: SodaUI();
@@ -435,9 +437,9 @@ then
 	insert(q2);
 end
 
-// 14. Are you pulling an all-nighter?
+// Are you pulling an all-nighter?
 
-rule "14. Are you pulling an all-nighter?"
+rule "Are you pulling an all-nighter?"
 when
     q : Question(questionText == "Are you pulling an all-nighter?", answer == null)
     sodaUI: SodaUI();
@@ -446,7 +448,7 @@ then
     update(q);
 end
 
-rule "14. Are you pulling an all-nighter? Yes"
+rule "Are you pulling an all-nighter? Yes"
 when
     q : Question(questionText == "Are you pulling an all-nighter?", answer == "Yes")
     sodaUI: SodaUI();
@@ -454,7 +456,7 @@ then
 	sodaUI.showRecomendations("Vault, Pepsi Max, RedBull Cola, Josta");
 end
 
-rule "14. Are you pulling an all-nighter? No"
+rule "Are you pulling an all-nighter? No"
 when
     q : Question(questionText == "Are you pulling an all-nighter?", answer == "No")
     sodaUI: SodaUI();
@@ -466,9 +468,9 @@ then
 	insert(q2);
 end
 
-// 15. Are you shopping at Tesco?
+// Are you shopping at Tesco?
 
-rule "15. Are you shopping at Tesco?"
+rule "Are you shopping at Tesco?"
 when
     q : Question(questionText == "Are you shopping at Tesco?", answer == null)
     sodaUI: SodaUI();
@@ -477,7 +479,7 @@ then
     update(q);
 end
 
-rule "15. Are you shopping at Tesco? Yes"
+rule "Are you shopping at Tesco? Yes"
 when
     q : Question(questionText == "Are you shopping at Tesco?", answer == "Yes")
     sodaUI: SodaUI();
@@ -485,7 +487,7 @@ then
 	sodaUI.showRecomendations("Tesco Cola");
 end
 
-rule "15. Are you shopping at Tesco? No"
+rule "Are you shopping at Tesco? No"
 when
     q : Question(questionText == "Are you shopping at Tesco?", answer == "No")
     sodaUI: SodaUI();
@@ -497,9 +499,9 @@ then
 	insert(q2);
 end
 
-// 16. Are you at picnic?
+// Are you at picnic?
 
-rule "16. Are you at picnic?"
+rule "Are you at picnic?"
 when
     q : Question(questionText == "Are you at picnic?", answer == null)
     sodaUI: SodaUI();
@@ -508,7 +510,7 @@ then
     update(q);
 end
 
-rule "16. Are you at picnic? Yes"
+rule "Are you at picnic? Yes"
 when
     q : Question(questionText == "Are you at picnic?", answer == "Yes")
     sodaUI: SodaUI();
@@ -516,7 +518,7 @@ then
 	sodaUI.showRecomendations("Country Time Lemonade, Squirt, Dad's Boot Beer, Sunkist");
 end
 
-rule "16. Are you at picnic? No"
+rule "Are you at picnic? No"
 when
     q : Question(questionText == "Are you at picnic?", answer == "No")
     sodaUI: SodaUI();
@@ -528,9 +530,9 @@ then
 	insert(q2);
 end
 
-// 17. Can you buy any of these?
+// Can you buy any of these?
 
-rule "17. Can you buy any of these?"
+rule "Can you buy any of these?"
 when
     q : Question(questionText == "Can you buy any of these?", answer == null)
     sodaUI: SodaUI();
@@ -539,7 +541,7 @@ then
     update(q);
 end
 
-rule "17. Can you buy any of these? Yes"
+rule "Can you buy any of these? Yes"
 when
     q : Question(questionText == "Can you buy any of these?", answer == "Yes")
     sodaUI: SodaUI();
@@ -547,7 +549,7 @@ then
 	sodaUI.showRecomendations("Birch Beer, Moxie, Ale, DrPepper glass, CheerWine");
 end
 
-rule "17. Can you buy any of these? No"
+rule "Can you buy any of these? No"
 when
     q : Question(questionText == "Can you buy any of these?", answer == "No")
     sodaUI: SodaUI();
@@ -559,9 +561,9 @@ then
 	insert(q2);
 end
 
-// 18. Do you enjoy Tyler Perry movies?
+// Do you enjoy Tyler Perry movies?
 
-rule "18. Do you enjoy Tyler Perry movies?"
+rule "Do you enjoy Tyler Perry movies?"
 when
     q : Question(questionText == "Do you enjoy Tyler Perry movies?", answer == null)
     sodaUI: SodaUI();
@@ -570,7 +572,7 @@ then
     update(q);
 end
 
-rule "18. Do you enjoy Tyler Perry movies? Yes"
+rule "Do you enjoy Tyler Perry movies? Yes"
 when
     q : Question(questionText == "Do you enjoy Tyler Perry movies?", answer == "Yes")
     sodaUI: SodaUI();
@@ -578,7 +580,7 @@ then
 	sodaUI.showRecomendations("Welchs, Fanta Grape, Big Red, Crush, Fanta, Hawaiian Punch");
 end
 
-rule "18. Do you enjoy Tyler Perry movies? No"
+rule "Do you enjoy Tyler Perry movies? No"
 when
     q : Question(questionText == "Do you enjoy Tyler Perry movies?", answer == "No")
     sodaUI: SodaUI();
@@ -590,9 +592,9 @@ then
 	insert(q2);
 end
 
-// 19. Do you want root beer?
+// Do you want root beer?
 
-rule "19. Do you want root beer?"
+rule "Do you want root beer?"
 when
     q : Question(questionText == "Do you want root beer?", answer == null)
     sodaUI: SodaUI();
@@ -601,7 +603,7 @@ then
     update(q);
 end
 
-rule "19. Do you want root beer? Yes"
+rule "Do you want root beer? Yes"
 when
     q : Question(questionText == "Do you want root beer?", answer == "Yes")
     sodaUI: SodaUI();
@@ -613,7 +615,7 @@ then
 	insert(q2);
 end
 
-rule "19. Do you want root beer? No"
+rule "Do you want root beer? No"
 when
     q : Question(questionText == "Do you want root beer?", answer == "No")
     sodaUI: SodaUI();
@@ -625,9 +627,9 @@ then
 	insert(q2);
 end
 
-// 20. Do you have a tummy ache?
+// Do you have a tummy ache?
 
-rule "20. Do you have a tummy ache?"
+rule "Do you have a tummy ache?"
 when
     q : Question(questionText == "Do you have a tummy ache?", answer == null)
     sodaUI: SodaUI();
@@ -636,7 +638,7 @@ then
     update(q);
 end
 
-rule "20. Do you have a tummy ache? Yes"
+rule "Do you have a tummy ache? Yes"
 when
     q : Question(questionText == "Do you have a tummy ache?", answer == "Yes")
     sodaUI: SodaUI();
@@ -644,7 +646,7 @@ then
 	sodaUI.showRecomendations("Canada dry, Schweppes Ginger Ale, Seagram's Ginger Ale, Vernors");
 end
 
-rule "20. Do you have a tummy ache? No"
+rule "Do you have a tummy ache? No"
 when
     q : Question(questionText == "Do you have a tummy ache?", answer == "No")
     sodaUI: SodaUI();
@@ -656,9 +658,9 @@ then
 	insert(q2);
 end
 
-// 21. Do you care about HFCS?
+// Do you care about HFCS?
 
-rule "21. Do you care about HFCS?"
+rule "Do you care about HFCS?"
 when
     q : Question(questionText == "Do you care about HFCS?", answer == null)
     sodaUI: SodaUI();
@@ -667,7 +669,7 @@ then
     update(q);
 end
 
-rule "21. Do you care about HFCS? Yes"
+rule "Do you care about HFCS? Yes"
 when
     q : Question(questionText == "Do you care about HFCS?", answer == "Yes")
     sodaUI: SodaUI();
@@ -678,7 +680,7 @@ then
 	q2.setPossibleAnswers(answers);
 end
 
-rule "21. Do you care about HFCS? No"
+rule "Do you care about HFCS? No"
 when
     q : Question(questionText == "Do you care about HFCS?", answer == "No")
     sodaUI: SodaUI();
@@ -690,9 +692,9 @@ then
 	insert(q2);
 end
 
-// 22. Do you care about quality?
+// Do you care about quality?
 
-rule "22. Do you care about quality?"
+rule "Do you care about quality?"
 when
     q : Question(questionText == "Do you care about quality?", answer == null)
     sodaUI: SodaUI();
@@ -701,7 +703,7 @@ then
     update(q);
 end
 
-rule "22. Do you care about quality? Yes"
+rule "Do you care about quality? Yes"
 when
     q : Question(questionText == "Do you care about quality?", answer == "Yes")
     sodaUI: SodaUI();
@@ -709,7 +711,7 @@ then
 	sodaUI.showRecomendations("Virgo, IBC, Thomas Kempler, Dr. Browns,...");
 end
 
-rule "22. Do you care about quality? No"
+rule "Do you care about quality? No"
 when
     q : Question(questionText == "Do you care about quality?", answer == "No")
     sodaUI: SodaUI();
@@ -717,9 +719,9 @@ then
 	sodaUI.showRecomendations("A&W, MUG Root Beer, Bargs Root Beer");
 end
 
-// 23. ...and taste?
+// ...and taste?
 
-rule "23. ...and taste?"
+rule "...and taste?"
 when
     q : Question(questionText == "...and taste?", answer == null)
     sodaUI: SodaUI();
@@ -728,7 +730,7 @@ then
     update(q);
 end
 
-rule "23. ...and taste? Yes"
+rule "...and taste? Yes"
 when
     q : Question(questionText == "...and taste?", answer == "Yes")
     sodaUI: SodaUI();
@@ -736,7 +738,7 @@ then
 	sodaUI.showRecomendations("Coca-Cola,...");
 end
 
-rule "23. ...and taste? No"
+rule "...and taste? No"
 when
     q : Question(questionText == "...and taste?", answer == "No")
     sodaUI: SodaUI();
@@ -744,9 +746,9 @@ then
 	sodaUI.showRecomendations("Hansen's Soda, Mountain Dew, Pepsi-Cola throwback");
 end
 
-// 24. Do you enjoy 'cherry' with your beverage?
+// Do you enjoy 'cherry' with your beverage?
 
-rule "24. Do you enjoy 'cherry' with your beverage?"
+rule "Do you enjoy 'cherry' with your beverage?"
 when
     q : Question(questionText == "Do you enjoy 'cherry' with your beverage?", answer == null)
     sodaUI: SodaUI();
@@ -755,7 +757,7 @@ then
     update(q);
 end
 
-rule "24. Do you enjoy 'cherry' with your beverage? Yes"
+rule "Do you enjoy 'cherry' with your beverage? Yes"
 when
     q : Question(questionText == "Do you enjoy 'cherry' with your beverage?", answer == "Yes")
     sodaUI: SodaUI();
@@ -763,7 +765,7 @@ then
 	sodaUI.showRecomendations("Coca-Cola Cherry, 7-up Cherry, Coca-Cola Cherry-Vanilla, DrPepper Vanilla");
 end
 
-rule "24. Do you enjoy 'cherry' with your beverage? No"
+rule "Do you enjoy 'cherry' with your beverage? No"
 when
     q : Question(questionText == "Do you enjoy 'cherry' with your beverage?", answer == "No")
     sodaUI: SodaUI();
@@ -775,9 +777,9 @@ then
 	insert(q2);
 end
 
-// 25. Can you tolerate caffeine?
+// Can you tolerate caffeine?
 
-rule "25. Can you tolerate caffeine?"
+rule "Can you tolerate caffeine?"
 when
     q : Question(questionText == "Can you tolerate caffeine?", answer == null)
     sodaUI: SodaUI();
@@ -786,7 +788,7 @@ then
     update(q);
 end
 
-rule "25. Can you tolerate caffeine? Yes"
+rule "Can you tolerate caffeine? Yes"
 when
     q : Question(questionText == "Can you tolerate caffeine?", answer == "Yes")
     sodaUI: SodaUI();
@@ -798,7 +800,7 @@ then
 	insert(q2);
 end
 
-rule "25. Can you tolerate caffeine? No"
+rule "Can you tolerate caffeine? No"
 when
     q : Question(questionText == "Can you tolerate caffeine?", answer == "No")
     sodaUI: SodaUI();
@@ -806,9 +808,9 @@ then
 	sodaUI.showRecomendations("Sprite, DrBrowns, 7up, sierra mist, BubbleUp");
 end
 
-// 26. Do you carry a backpack?
+// Do you carry a backpack?
 
-rule "26. Do you carry a backpack?"
+rule "Do you carry a backpack?"
 when
     q : Question(questionText == "Do you carry a backpack?", answer == null)
     sodaUI: SodaUI();
@@ -817,7 +819,7 @@ then
     update(q);
 end
 
-rule "26. Do you carry a backpack? Yes"
+rule "Do you carry a backpack? Yes"
 when
     q : Question(questionText == "Do you carry a backpack?", answer == "Yes")
     sodaUI: SodaUI();
@@ -825,7 +827,7 @@ then
 	sodaUI.showRecomendations("Pepsi Blue, Pibb Xtra, Mountain Dew, A&W");
 end
 
-rule "26. Do you carry a backpack? No"
+rule "Do you carry a backpack? No"
 when
     q : Question(questionText == "Do you carry a backpack?", answer == "No")
     sodaUI: SodaUI();
@@ -837,9 +839,9 @@ then
 	insert(q2);
 end
 
-// 27. Do you want your tastebuds to sing?
+// Do you want your tastebuds to sing?
 
-rule "27. Do you want your tastebuds to sing?"
+rule "Do you want your tastebuds to sing?"
 when
     q : Question(questionText == "Do you want your tastebuds to sing?", answer == null)
     sodaUI: SodaUI();
@@ -848,7 +850,7 @@ then
     update(q);
 end
 
-rule "27. Do you want your tastebuds to sing? Yes"
+rule "Do you want your tastebuds to sing? Yes"
 when
     q : Question(questionText == "Do you want your tastebuds to sing?", answer == "Yes")
     sodaUI: SodaUI();
@@ -856,7 +858,7 @@ then
 	sodaUI.showRecomendations("Shoots");
 end
 
-rule "27. Do you want your tastebuds to sing? No"
+rule "Do you want your tastebuds to sing? No"
 when
     q : Question(questionText == "Do you want your tastebuds to sing?", answer == "No")
     sodaUI: SodaUI();
@@ -868,9 +870,9 @@ then
 	insert(q2);
 end
 
-// 28. Do you long for 'the simpler' days?
+// Do you long for 'the simpler' days?
 
-rule "28. Do you long for 'the simpler' days?"
+rule "Do you long for 'the simpler' days?"
 when
     q : Question(questionText == "Do you long for 'the simpler' days?", answer == null)
     sodaUI: SodaUI();
@@ -879,7 +881,7 @@ then
     update(q);
 end
 
-rule "28. Do you long for 'the simpler' days? Yes"
+rule "Do you long for 'the simpler' days? Yes"
 when
     q : Question(questionText == "Do you long for 'the simpler' days?", answer == "Yes")
     sodaUI: SodaUI();
@@ -887,7 +889,7 @@ then
 	sodaUI.showRecomendations("Pepsi, RC Cola, Coca-Cola classic, NEK");
 end
 
-rule "28. Do you long for 'the simpler' days? No"
+rule "Do you long for 'the simpler' days? No"
 when
     q : Question(questionText == "Do you long for 'the simpler' days?", answer == "No")
     sodaUI: SodaUI();

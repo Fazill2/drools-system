@@ -16,7 +16,6 @@ public class SodaHelper {
             CheckoutCallback cc = new CheckoutCallback(kSession);
             SodaUI ui = new SodaUI(cc);
             kSession.insert(ui);
-            // kSession.fireAllRules();
         } catch (Throwable t) {
             t.printStackTrace();
         }
