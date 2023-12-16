@@ -1,49 +1,104 @@
 package com.soda.rules
 
 import com.soda.helper.SodaUI
+import javax.swing.*;
+
+
+declare Question
+	questionText : String = null;
+	possibleAnswers : String[] = null;
+	answer : String = null;
+end
 
 rule "init"
 when
-	sodaUI: SodaUI()
+	sodaUI : SodaUI()
 then
-    sodaUI.setQuestionString("Are you in mexico?");
-    // update(sodaUI);
-    System.out.println("SGAGYUSGA");
+	Question mexicoQuestion = new Question();
+	mexicoQuestion.setQuestionText("Are you in mexico?");
+	String[] answers = {"Yes", "No"};
+	mexicoQuestion.setPossibleAnswers(answers);
+	insert(mexicoQuestion);
+	System.out.println("init");
 end
 
-rule "nas"
+
+
+rule "Are you in mexico?"
 when
+    q : Question(questionText == "Are you in mexico?", answer == null)
+    sodaUI: SodaUI();
 then
-	System.out.println("asihaio");
+    showQuestion(q, sodaUI);
+    System.out.println("Are you in mexico?");
+    update(q);
 end
 
-rule "Question 1: Are you mexican?"
+rule "Are you in mexico? No"
 when
-    sodaUI : SodaUI(sodaUI.getQuestionString() == "Are you in mexico?")
+    q : Question(questionText == "Are you in mexico?", answer == "No")
+    sodaUI: SodaUI()
 then
-    System.out.println("He is in Mexico."); 
-    sodaUI.setQuestionString("Are you in Poland?");
-    System.out.println(sodaUI.getSelectedAnswer());
-    System.out.println(sodaUI.getQuestionString());
-    update(sodaUI);
+	Question noobQuestion = new Question();
+	noobQuestion.setQuestionText("Do you PwN nOoBs?");
+	String[] answers = {"Yes", "No"};
+	noobQuestion.setPossibleAnswers(answers);
+	insert(noobQuestion);
 end
 
-rule "Question 2: Are you polish?"
+rule "Are you in mexico? Yes"
 when
-    sodaUI : SodaUI(sodaUI.getQuestionString() == "Are you in Poland?",
-    sodaUI.getSelectedAnswer() == "Yes")
+    q : Question(questionText == "Are you in mexico?", answer == "Yes")
+    sodaUI: SodaUI()
 then
-    System.out.println("He is in Poland."); 
-    
-    sodaUI.setQuestionString("Are you French?");
-    update(sodaUI);
+	// TODO: implement suggestions
+	System.out.println("Show Suggestion");
 end
 
-rule "Question 3: Are you French?"
+
+
+rule "Do you PwN nOoBs?"
 when
-    sodaUI : SodaUI(sodaUI.getQuestionString() == "Are you French?")
+    q : Question(questionText == "Do you PwN nOoBs?", answer == null)
+    mexicoQuestion : Question(questionText == "Are you in mexico?", answer == "No")
+    sodaUI: SodaUI();
 then
-    System.out.println("He is french."); 
-    sodaUI.setQuestionString("Are you stupid?");
-    update(sodaUI);
+    showQuestion(q, sodaUI);
+    System.out.println("Do you PwN nOoBs?");
+    update(q);
 end
+
+rule "Do you PwN nOoBs? Yes"
+when
+    q : Question(questionText == "Do you PwN nOoBs?", answer == "Yes")
+    sodaUi: SodaUI();
+then
+	// TODO: implement suggestions
+	System.out.println("Show Suggestion");
+end
+
+rule "Do you PwN nOoBs? No"
+when
+    q : Question(questionText == "Do you PwN nOoBs?", answer == "No")
+    sodaUI: SodaUI();
+then
+    Question dietQuestion = new Question();
+	dietQuestion.setQuestionText("Are you on a diet?");
+	String[] answers = {"Yes", "No"};
+	dietQuestion.setPossibleAnswers(answers);
+	insert(dietQuestion);
+end
+
+
+function void showQuestion(Question question, JFrame frame){
+	int n = JOptionPane.showOptionDialog(frame,
+                                             question.getQuestionText(),
+                                             "",
+                                             0,
+                                             JOptionPane.QUESTION_MESSAGE,
+                                             null,
+                                             question.getPossibleAnswers(),
+                                             question.getPossibleAnswers()[0]);
+   question.setAnswer(question.getPossibleAnswers()[n]);
+}
+

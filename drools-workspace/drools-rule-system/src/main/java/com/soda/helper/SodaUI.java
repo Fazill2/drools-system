@@ -12,7 +12,9 @@ public class SodaUI extends JFrame {
 	private JLabel question = new JLabel("Are you ready? ");
 	private JComboBox<String> answerComboBox = new JComboBox<>(new String[]{"Yes", "No"});
     private CheckoutCallback callback;
-
+    public boolean answerSubmitted = false;
+    
+    
     public SodaUI(CheckoutCallback callback) {
         super("Soda Expert System");
         this.callback = callback;
@@ -22,10 +24,10 @@ public class SodaUI extends JFrame {
     }
    
     
-    public SodaUI(String questionString) throws HeadlessException {
+    public SodaUI(String questionString, String[] answers) throws HeadlessException {
 		super();
 		this.question = new JLabel(questionString);
-		this.answerComboBox = new JComboBox<>(new String[]{"Yes", "No"});
+		this.answerComboBox = new JComboBox<>(answers);
 		initComponents();
 		this.setVisible(true);
 	}
@@ -47,7 +49,9 @@ public class SodaUI extends JFrame {
                 String selectedAnswer = (String) answerComboBox.getSelectedItem();
                 // callback.processUserAnswer(selectedAnswer);
                 System.out.println("Question: "+ question.getText() + "| Answer: "+selectedAnswer);
+                answerSubmitted = true;
                 callback.checkout();
+                System.out.println(answerSubmitted);
             }
         });
 
@@ -62,8 +66,16 @@ public class SodaUI extends JFrame {
 		question.setText(text);
 	}
 	
+	public void setPossibleAnswers(String[] answers) {
+		this.answerComboBox = new JComboBox<>(answers);
+	}
+	
 	public String getSelectedAnswer() {
 		return (String) this.answerComboBox.getSelectedItem();
+	}
+	
+	public void setAnswerSubmitted(boolean state) {
+		answerSubmitted = state;
 	}
 	
     
