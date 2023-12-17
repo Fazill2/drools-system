@@ -12,10 +12,11 @@ public class SodaHelper {
             // load up the knowledge base
 	        KieServices ks = KieServices.Factory.get();
     	    KieContainer kContainer = ks.getKieClasspathContainer();
-    	    KieSession kSession = kContainer.newKieSession("ksession-rules");
-            CheckoutCallback cc = new CheckoutCallback(kSession);
+    	    
+            CheckoutCallback cc = new CheckoutCallback(kContainer);
             SodaUI ui = new SodaUI(cc);
-            kSession.insert(ui);
+            // kSession.insert(ui);
+            // kSession.fireAllRules();
         } catch (Throwable t) {
             t.printStackTrace();
         }

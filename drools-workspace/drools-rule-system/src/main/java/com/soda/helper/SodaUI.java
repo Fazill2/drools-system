@@ -10,14 +10,14 @@ public class SodaUI extends JFrame {
 	private static final long serialVersionUID = 125549691685141816L;
     private CheckoutCallback callback;
     public boolean answerSubmitted = false;
-    
+    public SodaUI t = this;
     
     public SodaUI(CheckoutCallback callback) {
         super("Soda Expert System");
         this.callback = callback;
         initComponents();
         this.setVisible(true);
-        this.callback.checkout();
+        // this.callback.checkout();
     }
    
     
@@ -34,7 +34,7 @@ public class SodaUI extends JFrame {
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                callback.checkout();
+                callback.checkout(t);
             }
         });
 
@@ -43,7 +43,7 @@ public class SodaUI extends JFrame {
 	
 	public void showRecomendations(String recommendationText) {
         JOptionPane.showMessageDialog(this, recommendationText, "Recommendation", JOptionPane.INFORMATION_MESSAGE);
-        dispose();
+        // dispose();
 	}
 	
 	public void setAnswerSubmitted(boolean state) {
