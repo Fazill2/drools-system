@@ -62,7 +62,7 @@ when
     q : Question(questionText == "Are you in mexico?", answer == "Yes")
     sodaUI: SodaUI()
 then
-	sodaUI.showRecomendations("Mexico drinks: ...");
+	sodaUI.showRecomendations("Jarritos soda");
 end
 
 // Do you PwN nOoBs?
